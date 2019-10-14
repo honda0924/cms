@@ -3,7 +3,5 @@
 $primary-color: color("blue", "lighten-2") !default;
 $secondary-color: color("teal", "lighten-2") !default;
 @import "materialize";
+@import "./clients"
 
-.sidebar{
-  width:20%;
-}

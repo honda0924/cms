@@ -1,5 +1,5 @@
 .col.s9.push-s1
-  .main
+  .main.show#on-progress
     %table.striped
       %tbody
         %tr
@@ -32,28 +32,63 @@
           %td
             %a.waves-effect.waves-light.btn-large
               詳細
--#   .main
--#     %table.striped
--#       %tbody
--#         %tr
--#           %td
--#             %p
--#               株式会社A　大阪支店
--#             %p
--#               大阪府大阪市中央区
--#             %p
--#               Tel:06-0000-1111  Fax:06-2222-3333
--#           %td
--#             %a.waves-effect.waves-light.btn-large
--#               詳細
--#         %tr
--#           %td
--#             %p
--#               株式会社A　東京本社
--#             %p
--#               東京都新宿区
--#             %p
--#               Tel:03-0000-1111  Fax:03-2222-3333
--#           %td
--#             %a.waves-effect.waves-light.btn-large
--#               詳細
+  .main#client-search
+    -# %input#company-search(type: "text",placeholder: "会社名で検索")
+    
+    %table.striped
+      %tbody
+        %tr
+          %td
+            %p
+              株式会社A　大阪支店
+            %p
+              大阪府大阪市中央区
+            %p
+              Tel:06-0000-1111  Fax:06-2222-3333
+          %td
+            %a.waves-effect.waves-light.btn-large
+              詳細
+        %tr
+          %td
+            %p
+              株式会社A　東京本社
+            %p
+              東京都新宿区
+            %p
+              Tel:03-0000-1111  Fax:03-2222-3333
+          %td
+            %a.waves-effect.waves-light.btn-large
+              詳細
+  .main#action-search
+    %table.striped
+      %tbody
+        %tr
+          %td
+            %p
+              株式会社A　大阪支店
+            %p
+              終了日　◯◯月△△日
+              %span
+                完了
+            %p
+              見積
+            %p
+              詳細内容
+          %td
+            %a.waves-effect.waves-light.btn-large
+              詳細
+        %tr
+          %td
+            %p
+              株式会社A　東京本社
+            %p
+              終了日　◯◯月△△日
+              %span
+                進行中
+            %p
+              DM送付
+            %p
+              詳細内容
+          %td
+            %a.waves-effect.waves-light.btn-large
+              詳細
