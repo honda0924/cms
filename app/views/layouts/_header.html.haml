@@ -3,7 +3,8 @@
     %a.brand-logo{href: "/"} CMS
     %ul#nav-mobile.right.hide-on-med-and-down
       %li
-        =link_to 'ログアウト',destroy_user_session_path,method: :delete
+        - if user_signed_in?
+          =link_to 'ログアウト',destroy_user_session_path,method: :delete
       %li
         %a{href: "/"} 設定
       %li
