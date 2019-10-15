@@ -1,3 +1,36 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.account-wrapper{
+  margin: 0;
+  width: 100vw;
+  height:100vh;
+  background-image: url("/images/top.jpg");
+  background-size:cover;
+  opacity: 1;
+}
+h2{
+  margin:0;
+}
+.account-box{
+  top:0;
+  position:relative;
+  width: 50vw;
+  height:100vh;
+  margin: 0 auto;
+  animation-name:fade-in1;
+  animation-duration:4s; //アニメーション時間
+  animation-timing-function: ease-out; //アニメーションさせるイージング
+  animation-delay:1s; //アニメーション開始させる時間
+  animation-iteration-count:1; //繰り返し回数
+  animation-direction:normal; //往復処理をするかどうか
+  animation-fill-mode: forwards; //アニメーション後のスタイルをどうするか
+  background-color: white;
+}
+@keyframes fade-in1 {
+  0% {opacity: 0}
+  100% {opacity: 1}
+}
+.links_login{
+  font-size: 20px;
+}
