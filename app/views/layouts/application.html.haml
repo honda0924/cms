@@ -1,7 +1,9 @@
 !!!
 %html
   %head
-    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %script{crossorigin: "anonymous", integrity: "sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=", src: "https://code.jquery.com/jquery-3.4.1.js"}
+
     %title Cms
     = csrf_meta_tags
     = csp_meta_tag

@@ -1,0 +1,33 @@
+%h2
+  顧客新規登録
+.form
+  = form_for @client do |f|
+    -# = f.label '会社名1',for: 'company1',class: "col offset-s1"
+    = f.text_field :company_name1 ,id: 'company1', class: "materialize-textarea col s8 offset-s1", placeholder: '会社名1'
+    = f.label '会社名2',for: 'company2',class: "col offset-s1"
+    = f.text_field :company_name2 ,id: 'company2', class: "materialize-textarea col s8 offset-s1",placeholder: '会社名2'
+    = f.label '郵便番号',for: 'postcode',class: "col offset-s1"
+    = f.text_field :postcode ,id: 'postcode', class: "materialize-textarea col s8 offset-s2",placeholder: '郵便番号（ハイフンなし）'
+    = f.label '住所1',for: 'addr1',class: "col offset-s1"
+    = f.text_field :addr1 ,id: 'addr1', class: "materialize-textarea col s8 offset-s2",placeholder: '住所1（都道府県・市区町村）'
+    = f.label '住所2',for: 'addr2',class: "col offset-s1"
+    = f.text_field :addr2 ,id: 'addr2', class: "materialize-textarea col s8 offset-s2",placeholder: '住所2（町名・番地）'
+    = f.label '住所3',for: 'addr3',class: "col offset-s1"
+    = f.text_field :addr3 ,id: 'addr3', class: "materialize-textarea col s8 offset-s2",placeholder: '住所3（建物名・号室）'
+    = f.label 'Tel',for: 'tel',class: "col offset-s1"
+    = f.text_field :tel ,id: 'tel', class: "materialize-textarea col s8 offset-s2",placeholder: 'Tel'
+    = f.label 'Fax',for: 'fax',class: "col offset-s1"
+    = f.text_field :fax ,id: 'fax', class: "materialize-textarea col s8 offset-s2",placeholder: 'Fax'
+    = f.label '顧客担当者',for: 'client_person_in_charge',class: "col offset-s1"
+    = f.text_field :client_person_in_charge ,id: 'client_person_in_charge', class: "materialize-textarea col s8 offset-s2",placeholder: '顧客担当者'
+    = f.label '携帯番号',for: 'mobile',class: "col offset-s1"
+    = f.text_field :mobile ,id: 'mobile', class: "materialize-textarea col s8 offset-s2",placeholder: '携帯番号'
+    = f.label 'URL',for: 'url',class: "col offset-s1"
+    = f.text_field :company_name2 ,id: 'url', class: "materialize-textarea col s8 offset-s2",placeholder: 'URL'
+    = f.label 'Email',for: 'email',class: "col offset-s1"
+    = f.text_field :email ,id: 'email', class: "materialize-textarea col s8 offset-s2",placeholder: 'email'
+    = f.label '顧客ランク',for: '',class: "col offset-s1"
+    = f.collection_select :client_rank_id, ClientRank.all, :id ,:rank,include_blank: true
+    = f.label 'カテゴリ',for: '',class: "col offset-s1"
+    = f.collection_select :client_cat_id, ClientCat.all, :id ,:category,include_blank: true
+    = f.submit '登録', class: 'waves-effect waves-light btn col s2 offset-s5'

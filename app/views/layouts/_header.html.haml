@@ -6,6 +6,6 @@
         - if user_signed_in?
           =link_to 'ログアウト',destroy_user_session_path,method: :delete
       %li
-        %a{href: "/"} 設定
+        = link_to '設定',client_cats_path
       %li
         %a{href: "/"} 管理者メニュー

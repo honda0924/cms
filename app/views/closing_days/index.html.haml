@@ -1,0 +1,10 @@
+%h2 締日
+= link_to '新規追加',new_closing_day_path
+%p.client-rank
+  - @closing_days.each do |c|
+    %ul
+      %li
+        =c.date
+      %li
+        = link_to '編集',edit_closing_day_path(c.id)
+        = link_to '削除',closing_day_path(c.id), method: :delete

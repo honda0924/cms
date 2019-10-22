@@ -1,0 +1,10 @@
+%h2 顧客ランク
+= link_to '新規追加',new_client_rank_path
+%p.client-rank
+  - @client_ranks.each do |r|
+    %ul
+      %li
+        =r.rank
+      %li
+        = link_to '編集',edit_client_rank_path(r.id)
+        = link_to '削除',client_rank_path(r.id), method: :delete
