@@ -34,31 +34,21 @@
               詳細
   .main#client-search
     -# %input#company-search(type: "text",placeholder: "会社名で検索")
-    
-    %table.striped
-      %tbody
-        %tr
-          %td
-            %p
-              株式会社A　大阪支店
-            %p
-              大阪府大阪市中央区
-            %p
-              Tel:06-0000-1111  Fax:06-2222-3333
-          %td
-            %a.waves-effect.waves-light.btn-large
-              詳細
-        %tr
-          %td
-            %p
-              株式会社A　東京本社
-            %p
-              東京都新宿区
-            %p
-              Tel:03-0000-1111  Fax:03-2222-3333
-          %td
-            %a.waves-effect.waves-light.btn-large
-              詳細
+    - @clients.each do |client|
+      %table.striped
+        %tbody
+          %tr
+            %td
+              %p
+                =client.company_name1
+              %p
+                =client.addr1
+              %p
+                =client.tel
+            %td
+              = link_to '詳細',edit_client_path(client.id)
+              -# %a.waves-effect.waves-light.btn-large
+                詳細
   .main#action-search
     %table.striped
       %tbody

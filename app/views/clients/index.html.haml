@@ -2,9 +2,10 @@
   = render 'sidebar'
   = render 'main'
 .modal.js-modal
-  .modal__bg
-  .modal__content
-    %p
-      ここにモーダルウィンドウで表示したいコンテンツを入れます。モーダルウィンドウを閉じる場合は下の「閉じる」をクリックするか、背景の黒い部分をクリックしても閉じることができます。
+  -# .modal__bg
+  .modal__content.row
+    %h2
+      顧客新規登録
+    = render 'client-form'
     %a.js-modal-close{href: ""}
       閉じる

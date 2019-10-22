@@ -1,0 +1,10 @@
+%h2 顧客区分
+= link_to '新規追加',new_client_cat_path
+%p.client-rank
+  - @client_cats.each do |c|
+    %ul
+      %li
+        =c.category
+      %li
+        = link_to '編集',edit_client_cat_path(c.id)
+        = link_to '削除',client_cat_path(c.id), method: :delete
