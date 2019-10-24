@@ -1,0 +1,39 @@
+.row
+  .sidebar
+    %p
+      =@client.company_name1
+    %p
+      =@client.company_name2
+    %p
+      =@client.postcode
+    %p
+      =@client.addr1
+    %p
+      =@client.addr2
+    %p
+      =@client.addr3
+    %p
+      =@client.tel
+    %p
+      =@client.fax
+    %p
+      =@client.client_person_in_charge
+    %p
+      =@client.mobile
+    %p
+      =@client.url
+    %p
+      =@client.email
+    %p
+      =@client.client_rank.rank if @client.client_rank_id
+    %p
+      =@client.client_cat.category if @client.client_cat_id
+    %p
+      =@client.closing_day.date if @client.closing_day_id
+    %p
+      =@client.payment_day.date if @client.payment_day_id
+    %p
+      =@client.payment_method.method if @client.payment_method_id
+    %p
+      =@client.user.email if @client.closing_day_id
+  .main.show
