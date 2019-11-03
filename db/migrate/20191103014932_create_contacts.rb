@@ -1,6 +1,6 @@
-class CreateActions < ActiveRecord::Migration[5.2]
+class CreateContacts < ActiveRecord::Migration[5.2]
   def change
-    create_table :actions do |t|
+    create_table :contacts do |t|
       t.references  :act_cat,foreign_key: true
       t.text  :detail
       t.string  :file
