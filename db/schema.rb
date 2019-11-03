@@ -10,26 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_14_062015) do
+ActiveRecord::Schema.define(version: 2019_11_03_021237) do
 
-  create_table "action_cats", force: :cascade do |t|
+  create_table "act_cats", force: :cascade do |t|
     t.string "category"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "actions", force: :cascade do |t|
-    t.integer "act_cat_id"
-    t.text "detail"
-    t.string "file"
-    t.datetime "start_date"
-    t.datetime "end_date"
-    t.boolean "in_progress"
-    t.integer "client_id"
+  create_table "action_cats", force: :cascade do |t|
+    t.string "category"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["act_cat_id"], name: "index_actions_on_act_cat_id"
-    t.index ["client_id"], name: "index_actions_on_client_id"
   end
 
   create_table "client_cats", force: :cascade do |t|
@@ -77,6 +69,20 @@ ActiveRecord::Schema.define(version: 2019_10_14_062015) do
     t.string "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "contacts", force: :cascade do |t|
+    t.integer "act_cat_id"
+    t.text "detail"
+    t.string "file"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.boolean "in_progress"
+    t.integer "client_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["act_cat_id"], name: "index_contacts_on_act_cat_id"
+    t.index ["client_id"], name: "index_contacts_on_client_id"
   end
 
   create_table "payment_days", force: :cascade do |t|

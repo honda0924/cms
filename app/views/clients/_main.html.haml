@@ -45,10 +45,8 @@
                 =client.addr1
               %p
                 =client.tel
-            %td
-              = link_to '詳細',edit_client_path(client.id)
-              -# %a.waves-effect.waves-light.btn-large
-                詳細
+            %td.waves-effect.waves-light.btn
+              = link_to '詳細',client_path(client.id)
   .main#action-search
     %table.striped
       %tbody
