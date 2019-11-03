@@ -68,13 +68,13 @@
           %tr
             %td
               %p
-                =@client.company_name1
+                =@client.company_name1 + @client.company_name2
               %p
                 =contact.act_cat.category if contact.act_cat_id
               %p
                 =contact.detail
             %td.waves-effect.waves-light.btn
-              = link_to '詳細',client_contact_path(@client.id,contact.id)
+              = link_to '詳細',client_contact_path(@client.id,params[:id])
   .modal.js-modal
     .modal__bg
     .modal__content.row
