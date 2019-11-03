@@ -1,39 +1,83 @@
 .row
-  .sidebar
+  .sidebar.col.s4
+    %h4
+      顧客情報
     %p
+      会社名1：
       =@client.company_name1
     %p
+      会社名2：
       =@client.company_name2
     %p
+      郵便番号：
       =@client.postcode
     %p
+      住所1：
       =@client.addr1
     %p
+      住所2：
       =@client.addr2
     %p
+      住所3：
       =@client.addr3
     %p
+      Tel：
       =@client.tel
     %p
+      Fax:
       =@client.fax
     %p
+      顧客担当者：
       =@client.client_person_in_charge
     %p
+      携帯番号：
       =@client.mobile
     %p
+      URL：
       =@client.url
     %p
+      Email：
       =@client.email
     %p
+      顧客ランク：
       =@client.client_rank.rank if @client.client_rank_id
     %p
+      顧客区分：
       =@client.client_cat.category if @client.client_cat_id
     %p
+      締日：
       =@client.closing_day.date if @client.closing_day_id
     %p
+      支払日：
       =@client.payment_day.date if @client.payment_day_id
     %p
+      支払方法：
       =@client.payment_method.method if @client.payment_method_id
     %p
+      自社担当者：
       =@client.user.email if @client.closing_day_id
-  .main.show
+    =link_to '編集',edit_client_path(params[:id])
+  .main.show.col.s8
+    %h4
+      アクション情報
+    .waves-effect.waves-light.btn-large.js-modal-open
+      アクションを新規追加
+    - @contacts.each do |contact|
+      %table.striped
+        %tbody
+          %tr
+            %td
+              %p
+                =@client.company_name1
+              %p
+                =contact.act_cat.category if contact.act_cat_id
+              %p
+                =contact.detail
+            %td.waves-effect.waves-light.btn
+              = link_to '詳細',client_contact_path(@client.id,contact.id)
+  .modal.js-modal
+    .modal__bg
+    .modal__content.row
+      = render '/shared/action-form'
+      %a.js-modal-close
+        閉じる
