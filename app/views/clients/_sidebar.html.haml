@@ -8,4 +8,19 @@
       アクション検索
   .waves-effect.waves-light.btn-large.js-modal-open
     顧客を新規追加
-  -# =link_to '新規追加',new_client_path
+  - if user_signed_in?
+    %h5
+      マスタ管理
+
+    %p
+      = link_to '顧客ランク',client_ranks_path
+    %p
+      = link_to '顧客区分',client_cats_path
+    %p
+      = link_to '締日',closing_days_path
+    %p
+      = link_to '支払日',payment_days_path
+    %p
+      = link_to '支払方法',payment_methods_path
+    %p
+      = link_to 'アクション区分',act_cats_path
