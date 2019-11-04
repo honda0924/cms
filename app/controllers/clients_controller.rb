@@ -23,7 +23,7 @@ class ClientsController < ApplicationController
   def show
     @client=Client.find(params[:id])
     @contacts=@client.contacts
-    @contact=@client.contacts.new
+    @new_contact=@client.contacts.new
   end
 
   private

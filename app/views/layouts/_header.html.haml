@@ -1,11 +1,18 @@
 %nav
   .nav-wrapper
     %a.brand-logo{href: "/"} Customer Star
-    %ul#nav-mobile.right.hide-on-med-and-down
-      %li
+    %p.login_user
+      =current_user.name if user_signed_in?
+    %ul#nav-mobile.right.hide-on-med-and-down.header__menu
+      %li.header__menu.header__menu__list#header-menu-logout
         - if user_signed_in?
           =link_to 'ログアウト',destroy_user_session_path,method: :delete
-      %li
-        = link_to '設定',client_cats_path
-      %li
-        %a{href: "/"} 管理者メニュー
+      -# %li.header__menu.header__menu__list#header-menu-configure
+      -#   設定
+      -#   %ul.header__configure__dropdown__menu
+      -#     %li.header__configure__dropdown__menu__list
+      -#       = link_to '顧客ランク',client_ranks_path
+      -#     %li
+      -#       = link_to '締日',closing_days_path
+      -# %li.header__menu.header__menu__list#header-menu-admin
+      -#   %a{href: "/"} 管理者メニュー
