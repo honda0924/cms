@@ -2,7 +2,7 @@ class ClientsController < ApplicationController
   def index
     @client=Client.new
     @clients=Client.where(user_id: current_user.id).where(["company_name1 LIKE ? OR company_name2 LIKE ?", "%#{params[:company_search]}%","%#{params[:company_search]}%"])
-    # binding.pry
+    @userclients=Client.where(user_id: current_user)
   end
   def new
     @client=Client.new

@@ -1,4 +1,4 @@
-.col.s9.push-s1
+.col.s8.push-s1
   .main.show#on-progress
     %table.striped
       %tbody
@@ -38,11 +38,8 @@
     .search
       = form_with url:clients_path,local: true do |f|
         .input-field.col.s6
-        = f.text_field :company_search,id: "company_search"
-        = f.label '会社名検索',for: "company_search"
-      -# %input#company-search{name: "company_keyword",type: "text"}
-      -# %label{for: "company-search"}
-        会社名検索
+          = f.text_field :company_search,id: "company_search"
+          = f.label '会社名で検索',for: "company_search"
     %table.striped
       %tbody#client-search-result
         - @clients.each do |client|
@@ -52,36 +49,20 @@
                 =client.company_name1 + client.company_name2
             %td
               = link_to '詳細',client_path(client.id),{class: "waves-effect waves-light btn"}
-  .main#action-search
+  .main#contact-search
     %table.striped
-      %tbody
-        %tr
-          %td
-            %p
-              株式会社A　大阪支店
-            %p
-              終了日　◯◯月△△日
-              %span
-                完了
-            %p
-              見積
-            %p
-              詳細内容
-          %td
-            %a.waves-effect.waves-light.btn-large
-              詳細
-        %tr
-          %td
-            %p
-              株式会社A　東京本社
-            %p
-              終了日　◯◯月△△日
-              %span
-                進行中
-            %p
-              DM送付
-            %p
-              詳細内容
-          %td
-            %a.waves-effect.waves-light.btn-large
-              詳細
+      %tbody#contact-search-result
+        - @userclients.each do |client|
+          - client.contacts.each do |contact|
+            %tr
+              %td
+                %p
+                  =client.company_name1 + client.company_name2
+                %p
+                  =contact.act_cat.category
+                %p
+                  =contact.end_date
+                %p
+                  =contact.detail
+              %td
+                = link_to '詳細',client_contact_path(client.id,contact.id),{class: "waves-effect waves-light btn"}
