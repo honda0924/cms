@@ -9,4 +9,6 @@ class Client < ApplicationRecord
   belongs_to :closing_day,optional: true
   belongs_to :payment_day,optional: true
   belongs_to :payment_method,optional: true
+
+
 end

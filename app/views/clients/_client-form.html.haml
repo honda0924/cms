@@ -1,5 +1,6 @@
 .form
-  = form_for @client do |f|
+  = form_for @client,html: {class: "h-adr"} do |f|
+    %span.p-country-name{style: "display:none;"}Japan
     .input-field.col.s8.offset-s1
       = f.text_field :company_name1 ,id: 'company1'
       = f.label '会社名1',for: 'company1'
@@ -7,16 +8,16 @@
       = f.text_field :company_name2 ,id: 'company2'
       = f.label '会社名2',for: 'company2'
     .input-field.col.s4.offset-s1
-      = f.text_field :postcode ,id: 'postcode'
+      = f.text_field :postcode ,id: 'postcode',class: "p-postal-code"
       = f.label '郵便番号',for: 'postcode'
     .input-field.col.s8.offset-s1
-      = f.text_field :addr1 ,id: 'addr1'
+      = f.text_field :addr1,class: "p-region",id: 'addr1'
       = f.label '住所1',for: 'addr1'
     .input-field.col.s8.offset-s1
-      = f.text_field :addr2 ,id: 'addr2'
+      = f.text_field :addr2 ,id: 'addr2',class: "p-locality p-street-address"
       = f.label '住所2(町名・番地)',for: 'addr2'
     .input-field.col.s8.offset-s1
-      = f.text_field :addr3 ,id: 'addr3'
+      = f.text_field :addr3 ,id: 'addr3',class: "p-extended-address"
       = f.label '住所3(建物名・号室)',for: 'addr3'
     .input-field.col.s8.offset-s1
       = f.text_field :tel ,id: 'tel'
