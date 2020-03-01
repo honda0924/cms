@@ -2,7 +2,29 @@ class ClientsController < ApplicationController
   def index
     @client=Client.new
     @clients=Client.where(user_id: current_user.id).where(["company_name1 LIKE ? OR company_name2 LIKE ?", "%#{params[:company_search]}%","%#{params[:company_search]}%"])
-    @userclients=Client.where(user_id: current_user)
+    @user_clients=Client.where(user_id: current_user.id)
+    @in_progress_contacts=[]
+    @finished_contacts=[]
+    @user_clients.each do |client|
+      client.contacts.each do |contact|
+        if contact.in_progress
+          @in_progress_contacts << contact
+        else
+          @finished_contacts << contact
+        end
+      end
+    end
+    if params[:in_progress_search]
+      @in_progress_contacts=@in_progress_contacts.sort{|a,b| a[:end_date]<=>b[:end_date]}.select{|x| x[:detail].include?(params[:in_progress_search])}
+    else
+      @in_progress_contacts=@in_progress_contacts.sort{|a,b| a[:end_date]<=>b[:end_date]}
+    end
+    if params[:finished_search]
+      @finished_contacts=@finished_contacts.sort{|a,b| b[:end_date]<=>a[:end_date]}.select{|x| x[:detail].include?(params[:finished_search])}
+    else
+      @finished_contacts=@finished_contacts.sort{|a,b| b[:end_date]<=>a[:end_date]}
+    end
+
   end
   def new
     @client=Client.new
@@ -23,8 +45,9 @@ class ClientsController < ApplicationController
   end
   def show
     @client=Client.find(params[:id])
+    @clients=[]
+    @clients << @client
     @contacts=@client.contacts
-    @new_contact=@client.contacts.new
   end
 
   private

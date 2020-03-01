@@ -1,1 +1,30 @@
-= render 'shared/action-form'
+-# .wrapper
+-#   .row
+-#     .sidebar.col.s4
+-#     .col.s8
+-#       .main.show
+-#         %h4
+-#           アクション詳細
+-#         %h5
+-#           = "会社名：" + @contact.client.company_name1 + @contact.client.company_name2
+-#         %p
+-#           = "区分：" + @contact.act_cat.category
+-#         %p
+-#           = "詳細：" + @contact.detail
+-#         %p
+-#           = "添付ファイル："
+-#           %span
+-#             =@contact.file
+-#         %p
+-#           = "期間：" + @contact.start_date.strftime("%Y-%m-%d") + " ~ " + @contact.end_date.strftime("%Y-%m-%d")
+-#         .waves-effect.waves-light.btn-large.js-modal-open
+-#           編集
+-#       .modal.js-modal
+-#       .modal__bg
+-#       .modal__content.row
+-#         %h4
+-#           アクション編集
+-#         = render partial: '/shared/action-form', locals: { client: @client,contact: @contact}
+-#         %a.js-modal-close
+-#           閉じる
+= render partial: 'shared/action-form', locals: { client: @client,contact: @contact }
