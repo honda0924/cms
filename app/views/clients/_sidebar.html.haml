@@ -3,24 +3,24 @@
     .collection-item.active.orange
       進行中
     .collection-item
-      顧客検索
+      完了済
     .collection-item
-      アクション検索
+      顧客検索
   .waves-effect.waves-light.btn-large.js-modal-open
     顧客を新規追加
   - if user_signed_in?
     %h5
       マスタ管理
-
-    %p
-      = link_to '顧客ランク',client_ranks_path
-    %p
-      = link_to '顧客区分',client_cats_path
-    %p
-      = link_to '締日',closing_days_path
-    %p
-      = link_to '支払日',payment_days_path
-    %p
-      = link_to '支払方法',payment_methods_path
-    %p
-      = link_to 'アクション区分',act_cats_path
+    .collection
+      .collection-item
+        = link_to '顧客ランク',client_ranks_path
+      .collection-item
+        = link_to '顧客区分',client_cats_path
+      .collection-item
+        = link_to '締日',closing_days_path
+      .collection-item
+        = link_to '支払日',payment_days_path
+      .collection-item
+        = link_to '支払方法',payment_methods_path
+      .collection-item
+        = link_to 'アクション区分',act_cats_path

@@ -1,82 +1,68 @@
-.col.s9.push-s1
-  .main.show#on-progress
+.col.s8
+  .main.show#in_progress-search
+    %h4
+      進行中
+    .search
+      = form_with url:clients_path,local: true do |f|
+        .input-field.col.s6
+          = f.text_field :contact_search,id: "contact_search"
+          = f.label 'アクションの詳細内容で検索',for: "contact_search"
     %table.striped
-      %tbody
-        %tr
-          %td
-            %p
-              株式会社A　大阪支店
-            %p
-              終了日　◯◯月△△日
-              %span
-                進行中
-            %p
-              見積
-            %p
-              詳細内容
-          %td
-            %a.waves-effect.waves-light.btn-large
-              詳細
-        %tr
-          %td
-            %p
-              株式会社A　東京本社
-            %p
-              終了日　◯◯月△△日
-              %span
-                進行中
-            %p
-              DM送付
-            %p
-              詳細内容
-          %td
-            %a.waves-effect.waves-light.btn-large
-              詳細
-  .main#client-search
-    -# %input#company-search(type: "text",placeholder: "会社名で検索")
-    - @clients.each do |client|
-      %table.striped
-        %tbody
+      %tbody#in_progress-search-result
+        - @in_progress_contacts.each do |contact|
           %tr
             %td
               %p
-                =client.company_name1
+                = contact.in_progress ? "進行中" : "完了"
               %p
-                =client.addr1
+                ="会社名："+ contact.client.company_name1 + contact.client.company_name2
               %p
-                =client.tel
-            %td.waves-effect.waves-light.btn
-              = link_to '詳細',client_path(client.id)
-  .main#action-search
+                ="区分：" + contact.act_cat.category if contact.act_cat_id
+              %p
+                ="期間："+ contact.start_date.strftime("%Y-%m-%d") + " ~ " + contact.end_date.strftime("%Y-%m-%d")
+              %p
+                =contact.detail
+            %td
+              = link_to '詳細',client_contact_path(contact.client.id,contact.id),{class: "waves-effect waves-light btn"}
+  .main#finished-search
+    %h4
+      完了済
+    .search
+      = form_with url:clients_path,local: true do |f|
+        .input-field.col.s6
+          = f.text_field :contact_search,id: "contact_search"
+          = f.label 'アクションの詳細内容で検索',for: "contact_search"
     %table.striped
-      %tbody
-        %tr
-          %td
-            %p
-              株式会社A　大阪支店
-            %p
-              終了日　◯◯月△△日
-              %span
-                完了
-            %p
-              見積
-            %p
-              詳細内容
-          %td
-            %a.waves-effect.waves-light.btn-large
-              詳細
-        %tr
-          %td
-            %p
-              株式会社A　東京本社
-            %p
-              終了日　◯◯月△△日
-              %span
-                進行中
-            %p
-              DM送付
-            %p
-              詳細内容
-          %td
-            %a.waves-effect.waves-light.btn-large
-              詳細
+      %tbody#finished-search-result
+        - @finished_contacts.each do |contact|
+          %tr
+            %td
+              %p
+                = contact.in_progress ? "進行中" : "完了"
+              %p
+                ="会社名："+ contact.client.company_name1 + contact.client.company_name2
+              %p
+                ="区分：" + contact.act_cat.category if contact.act_cat_id
+              %p
+                ="期間："+ contact.start_date.strftime("%Y-%m-%d") + " ~ " + contact.end_date.strftime("%Y-%m-%d")
+              %p
+                =contact.detail
+            %td
+              = link_to '詳細',client_contact_path(contact.client.id,contact.id),{class: "waves-effect waves-light btn"}
+  .main#client-search
+    %h4
+      顧客検索
+    .search
+      = form_with url:clients_path,local: true do |f|
+        .input-field.col.s6
+          = f.text_field :company_search,id: "company_search"
+          = f.label '会社名で検索',for: "company_search"
+    %table.striped
+      %tbody#client-search-result
+        - @clients.each do |client|
+          %tr
+            %td
+              %p.client
+                =client.company_name1 + client.company_name2
+            %td
+              = link_to '詳細',client_path(client.id),{class: "waves-effect waves-light btn"}

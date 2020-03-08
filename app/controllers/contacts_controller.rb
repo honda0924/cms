@@ -10,13 +10,13 @@ class ContactsController < ApplicationController
     redirect_to client_path(params[:client_id])
   end
   def show
-    @contact=Contact.find(params[:id])
-    @client=@contact.client
+    @client=Client.find(params[:client_id])
+    @contact=@client.contacts.find(params[:id])
   end
   def update
-    contact=Contact.find(params[:id])
-    client=contact.client
-    contact.update(contact_params)
+    @contact=Contact.find(params[:id])
+    @client=@contact.client
+    @contact.update(contact_params)
     redirect_to client_path(params[:client_id])
   end
 
